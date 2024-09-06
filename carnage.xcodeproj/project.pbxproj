@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247AC3A2C8B096400E5F26A /* carnageButton.swift */; };
 		A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA822C88B20B00857B4B /* carnageApp.swift */; };
 		A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA842C88B20B00857B4B /* ContentView.swift */; };
 		A2A3AA872C88B20B00857B4B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA862C88B20B00857B4B /* Item.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A247AC3A2C8B096400E5F26A /* carnageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageButton.swift; sourceTree = "<group>"; };
 		A2A3AA7F2C88B20B00857B4B /* carnage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carnage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A3AA822C88B20B00857B4B /* carnageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageApp.swift; sourceTree = "<group>"; };
 		A2A3AA842C88B20B00857B4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A247AC392C8B093200E5F26A /* views */ = {
+			isa = PBXGroup;
+			children = (
+				A247AC3A2C8B096400E5F26A /* carnageButton.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		A2A3AA762C88B20B00857B4B = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		A2A3AA812C88B20B00857B4B /* carnage */ = {
 			isa = PBXGroup;
 			children = (
+				A247AC392C8B093200E5F26A /* views */,
 				A2A3AA822C88B20B00857B4B /* carnageApp.swift */,
 				A2A3AA842C88B20B00857B4B /* ContentView.swift */,
 				A2A3AA862C88B20B00857B4B /* Item.swift */,
@@ -263,6 +274,7 @@
 				A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */,
 				A2A3AA872C88B20B00857B4B /* Item.swift in Sources */,
 				A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */,
+				A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

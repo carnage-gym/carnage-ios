@@ -18,27 +18,41 @@ struct ContentView: View {
             Divider()
         })
         
-        let button = Button {
-            showMenu = !showMenu
-        } label: {
-            Image(systemName: "gym.bag.fill")
-                .font(.system(size: 24))
-                .foregroundStyle(.white)
-                .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
-                .background(showMenu ? Color(red: 1, green: 80/255, blue: 80/255) : Color(red: 1, green: 90/255, blue: 90/255))
-                .clipShape(Circle())
-        }
+        let button = carnageButton(image: "gym.bag.fill", action: {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                showMenu = !showMenu
+            }
+        })
         
         if showMenu {
             ZStack {
-                Text("\(Image(systemName: "info.circle")) menu options will appear here... ").bold()
+                // Text("\(Image(systemName: "info.circle")) menu options will appear here... ").bold()
+                HStack {
+                    carnageButton(image: "book.closed.fill", action: {
+                        withAnimation(.easeInOut(duration: 0.4)) {
+                            print("this will be tested.")
+                        }
+                    })
+                    
+                    carnageButton(image: "gym.bag.fill", action: {
+                        withAnimation(.easeInOut(duration: 0.4)) {
+                            showMenu = !showMenu
+                        }
+                    })
+                    
+                    carnageButton(image: "person.fill", action: {
+                        withAnimation(.easeInOut(duration: 0.4)) {
+                            showMenu = !showMenu
+                        }
+                    })
+
+                }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 content.opacity(0.4)
             }
         } else {
             content
         }
         button
-        
     }
 }
 
