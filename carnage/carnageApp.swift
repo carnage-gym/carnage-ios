@@ -25,7 +25,7 @@ struct carnageApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentVieww()
         }
         .modelContainer(sharedModelContainer)
     }

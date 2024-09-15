@@ -10,7 +10,7 @@ import SwiftUI
 struct carnageNavLink<T : View>: View {
     let image: String
     let dest: T
-    
+        
     var body: some View {
         NavigationLink(destination: dest, label: {
             Image(systemName: image)
