@@ -29,28 +29,17 @@ struct ContentView: View {
         })
         
         if showMenu {
+            NavigationView {
             ZStack {
                 HStack {
-                    carnageButton(image: "book.closed.fill", action: {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            print("this will be tested.")
-                        }
-                    })
-                    
-                    carnageButton(image: "gym.bag.fill", action: {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            showMenu = !showMenu
-                        }
-                    })
-                    
-                    carnageButton(image: "person.fill", action: {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            showMenu = !showMenu
-                        }
-                    })
+                    carnageNavLink(image: "book.closed.fill", dest: logbookView())
+                    carnageNavLink(image: "gym.bag.fill", dest: routinesView())
+                    carnageNavLink(image: "person.fill", dest: profileView())
+
 
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 content.opacity(0.4).blur(radius: 4.0)
+            }
             }
         } else {
             content
