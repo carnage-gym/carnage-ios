@@ -7,36 +7,32 @@
 
 import Foundation
 
-struct API {
-    var access_token: String
-    var refresh_token: String
-    var session = URLSession.shared
-    
-    func getTokens(username: String, password: String) async throws -> Dictionary<String, String> {
+enum APIError : Error {
+    case InvalidResponse
+    case InvalidRequest
+}
 
-        let url = URL.init(string: "192.168.1.233/users/token/sign_in")!
+struct API {
+    static var session = URLSession.shared
+    static var API_URL = "https://127.0.0.1:3000"
+    
+    /// Retrieves access and refresh token from carnage api.
+    static func getTokens(username: String, password: String) async throws {
+        let url = URL.init(string: "\(API_URL)/users/tokens/sign_in")!
         var request = URLRequest(url: url)
         let parameters = ["username" : username, "password" : password]
         
         request.httpMethod = "POST"
         request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        request.setValue("Content-Type", forHTTPHeaderField: "application/json")
         
-    
-        let s = try session.dataTask(with: request) {data,response,error in
-            if let error = error {
-                fatalError("Failed to send form data....")
-                
-            } else if let data = data {
-                let dec = JSONDecoder()
-                let s = try dec.decode(Dictionary<String, String>, from: data)
-                
-                
-                
-            }
-        }.resume()
+        let (data, response) = try await session.data(for: request)
         
-        return s
+        // Only gets past this line if response is successful
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
         
         
+            
+        print(data.base64EncodedString())
     }
 }
