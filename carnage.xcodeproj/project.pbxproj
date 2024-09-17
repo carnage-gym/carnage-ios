@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A20CF6912C971BFE00D0491E /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20CF6902C971BFE00D0491E /* profileView.swift */; };
 		A20CF6932C971F9200D0491E /* carnageNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20CF6922C971F9200D0491E /* carnageNavLink.swift */; };
+		A21C3CEC2C99CFC100774DDC /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21C3CEB2C99CFC100774DDC /* SignInView.swift */; };
 		A23563E32C972B2A00418F5C /* routinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E22C972B2A00418F5C /* routinesView.swift */; };
 		A23563E52C972B9D00418F5C /* logbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E42C972B9D00418F5C /* logbookView.swift */; };
 		A23563E82C97473D00418F5C /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E72C97473D00418F5C /* user.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		A20CF6902C971BFE00D0491E /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
 		A20CF6922C971F9200D0491E /* carnageNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageNavLink.swift; sourceTree = "<group>"; };
+		A21C3CEB2C99CFC100774DDC /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A23563E22C972B2A00418F5C /* routinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routinesView.swift; sourceTree = "<group>"; };
 		A23563E42C972B9D00418F5C /* logbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logbookView.swift; sourceTree = "<group>"; };
 		A23563E72C97473D00418F5C /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 			path = components;
 			sourceTree = "<group>";
 		};
+		A21C3CE62C99CF0500774DDC /* devise */ = {
+			isa = PBXGroup;
+			children = (
+				A21C3CEB2C99CFC100774DDC /* SignInView.swift */,
+			);
+			path = devise;
+			sourceTree = "<group>";
+		};
 		A23563E62C97471D00418F5C /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 		A247AC392C8B093200E5F26A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				A21C3CE62C99CF0500774DDC /* devise */,
 				A20CF68F2C970DCE00D0491E /* components */,
 				A20CF6902C971BFE00D0491E /* profileView.swift */,
 				A23563E22C972B2A00418F5C /* routinesView.swift */,
@@ -324,6 +335,7 @@
 				A23563E32C972B2A00418F5C /* routinesView.swift in Sources */,
 				A2A3AA872C88B20B00857B4B /* Item.swift in Sources */,
 				A23563E52C972B9D00418F5C /* logbookView.swift in Sources */,
+				A21C3CEC2C99CFC100774DDC /* SignInView.swift in Sources */,
 				A23563E82C97473D00418F5C /* user.swift in Sources */,
 				A20CF6912C971BFE00D0491E /* profileView.swift in Sources */,
 				A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */,
