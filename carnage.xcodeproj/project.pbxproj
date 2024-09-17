@@ -13,6 +13,7 @@
 		A23563E52C972B9D00418F5C /* logbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E42C972B9D00418F5C /* logbookView.swift */; };
 		A23563E82C97473D00418F5C /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E72C97473D00418F5C /* user.swift */; };
 		A23563EB2C9748A600418F5C /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563EA2C9748A600418F5C /* api.swift */; };
+		A23A49912C99C59000F56A2C /* tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A49902C99C59000F56A2C /* tokens.swift */; };
 		A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247AC3A2C8B096400E5F26A /* carnageButton.swift */; };
 		A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA822C88B20B00857B4B /* carnageApp.swift */; };
 		A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA842C88B20B00857B4B /* ContentView.swift */; };
@@ -48,6 +49,7 @@
 		A23563E42C972B9D00418F5C /* logbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logbookView.swift; sourceTree = "<group>"; };
 		A23563E72C97473D00418F5C /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		A23563EA2C9748A600418F5C /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
+		A23A49902C99C59000F56A2C /* tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tokens.swift; sourceTree = "<group>"; };
 		A247AC3A2C8B096400E5F26A /* carnageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageButton.swift; sourceTree = "<group>"; };
 		A2A3AA7F2C88B20B00857B4B /* carnage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carnage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A3AA822C88B20B00857B4B /* carnageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageApp.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		A2A3AA9B2C88B20C00857B4B /* carnageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carnageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A3AA9F2C88B20C00857B4B /* carnageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageUITests.swift; sourceTree = "<group>"; };
 		A2A3AAA12C88B20C00857B4B /* carnageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A2D0E41A2C99BBBB005C7DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A23563E72C97473D00418F5C /* user.swift */,
+				A23A49902C99C59000F56A2C /* tokens.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -146,6 +150,7 @@
 		A2A3AA812C88B20B00857B4B /* carnage */ = {
 			isa = PBXGroup;
 			children = (
+				A2D0E41A2C99BBBB005C7DD9 /* Info.plist */,
 				A23563E92C97489500418F5C /* logic */,
 				A23563E62C97471D00418F5C /* models */,
 				A247AC392C8B093200E5F26A /* views */,
@@ -322,6 +327,7 @@
 				A23563E82C97473D00418F5C /* user.swift in Sources */,
 				A20CF6912C971BFE00D0491E /* profileView.swift in Sources */,
 				A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */,
+				A23A49912C99C59000F56A2C /* tokens.swift in Sources */,
 				A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +495,7 @@
 				DEVELOPMENT_TEAM = L77KJB3955;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = carnage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -518,6 +525,7 @@
 				DEVELOPMENT_TEAM = L77KJB3955;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = carnage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

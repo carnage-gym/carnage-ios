@@ -34,17 +34,14 @@ struct ContentView: View {
                     carnageNavLink(image: "book.closed.fill", dest: logbookView())
                     carnageNavLink(image: "gym.bag.fill", dest: routinesView())
                     carnageNavLink(image: "person.fill", dest: profileView())
-                    carnageButton(image: "arrow.uturn.left", action: {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            showMenu = !showMenu
-                        }})
+                   
                     
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-            }
+            }.toolbar(.hidden)
         } else {
             content
-            button
         }
+        button
         
     }
 }

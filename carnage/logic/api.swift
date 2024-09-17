@@ -14,25 +14,30 @@ enum APIError : Error {
 
 struct API {
     static var session = URLSession.shared
-    static var API_URL = "https://127.0.0.1:3000"
+    static var API_URL = "http://carnage.test"
     
-    /// Retrieves access and refresh token from carnage api.
-    static func getTokens(username: String, password: String) async throws {
+    /// Retrieves access and refresh tokens from carnage api.
+    static func getTokens(email: String, password: String) async throws -> Tokens {
+        var tokens : Tokens
         let url = URL.init(string: "\(API_URL)/users/tokens/sign_in")!
+        let parameters = ["email" : email, "password" : password]
         var request = URLRequest(url: url)
-        let parameters = ["username" : username, "password" : password]
-        
+
         request.httpMethod = "POST"
-        request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        request.setValue("Content-Type", forHTTPHeaderField: "application/json")
-        
+        request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
         let (data, response) = try await session.data(for: request)
         
         // Only gets past this line if response is successful
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
         
+        do {
+            print(data)
+            let dec = JSONDecoder()
+            tokens = try! dec.decode(Tokens.self, from: data)
+        }
         
-            
-        print(data.base64EncodedString())
+        return tokens
     }
 }
