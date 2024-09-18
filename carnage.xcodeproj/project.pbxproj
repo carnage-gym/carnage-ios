@@ -17,6 +17,7 @@
 		A23563EB2C9748A600418F5C /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563EA2C9748A600418F5C /* api.swift */; };
 		A23A49912C99C59000F56A2C /* tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A49902C99C59000F56A2C /* tokens.swift */; };
 		A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247AC3A2C8B096400E5F26A /* carnageButton.swift */; };
+		A25EE4762C9B02DC0009A041 /* KeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = A25EE4752C9B02DC0009A041 /* KeychainWrapper */; };
 		A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA822C88B20B00857B4B /* carnageApp.swift */; };
 		A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA842C88B20B00857B4B /* ContentView.swift */; };
 		A2A3AA872C88B20B00857B4B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA862C88B20B00857B4B /* Item.swift */; };
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25EE4762C9B02DC0009A041 /* KeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,9 @@
 			dependencies = (
 			);
 			name = carnage;
+			packageProductDependencies = (
+				A25EE4752C9B02DC0009A041 /* KeychainWrapper */,
+			);
 			productName = carnage;
 			productReference = A2A3AA7F2C88B20B00857B4B /* carnage.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +295,9 @@
 				Base,
 			);
 			mainGroup = A2A3AA762C88B20B00857B4B;
+			packageReferences = (
+				A25EE4742C9B02DC0009A041 /* XCRemoteSwiftPackageReference "KeychainWrapper" */,
+			);
 			productRefGroup = A2A3AA802C88B20B00857B4B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -676,6 +684,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A25EE4742C9B02DC0009A041 /* XCRemoteSwiftPackageReference "KeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/puretears/KeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A25EE4752C9B02DC0009A041 /* KeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A25EE4742C9B02DC0009A041 /* XCRemoteSwiftPackageReference "KeychainWrapper" */;
+			productName = KeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A2A3AA772C88B20B00857B4B /* Project object */;
 }
