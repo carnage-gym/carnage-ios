@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Tokens : Decodable {
+class Tokens : Decodable, ObservableObject {
     let token: String
     let refresh_token: String
 }

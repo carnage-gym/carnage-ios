@@ -7,13 +7,24 @@
 
 import SwiftUI
 
+class SignInViewModel : ObservableObject {
+    @Published var email = ""
+    @Published var password = ""
+    
+    func sign_in() {
+        Task {
+            let tokens = try! await API.getTokens(email: email.lowercased(), password: password)
+            
+            carnageApp.keychain.set(tokens.token, forKey: "key.string.token")
+            
+            print(tokens.token)
+        }
+    }
+}
+
 struct SignInView: View {
-    @State var email: String
-    @State var password: String
-    
-    @State var accessToken: String
-    @State var refreshToken: String
-    
+    @StateObject var model = SignInViewModel()
+        
     var body: some View {
         Form {
             VStack(alignment: .center){
@@ -24,17 +35,14 @@ struct SignInView: View {
                 // $ works "similarly" to & in C and cpp. The reason one cannot simply use email is because text is of type Binding<String> and not String.
                 
                 Section {
-                    TextField("Email", text: $email)
+                    TextField("Email", text: $model.email)
                         .keyboardType(.emailAddress)
                         .padding(.all)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)
                         
-                        
-                        
-                    
                     Spacer()
                                     
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $model.password)
                         .padding(.all)
                         .shadow(radius: 1)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)
@@ -42,17 +50,9 @@ struct SignInView: View {
                 
                 
                 Button("Sign in") {
-                    Task {
-                        let tokens = try! await API.getTokens(email: email, password: password)
-                        
-                        accessToken = tokens.token
-                        refreshToken = tokens.refresh_token
-                        
-                        print("")
-                        
-                        
-                    }
-                }.padding()
+                    
+                    model.sign_in()
+                }.padding().disabled(model.email.isEmpty || model.password.isEmpty)
                 
                 //VStack {
                 //    Text("token: \(accessToken)")
@@ -67,5 +67,5 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView(email: "", password: "", accessToken: "", refreshToken: "")
+    SignInView()
 }
