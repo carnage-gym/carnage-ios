@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct profileView: View {
+struct ProfileView: View {
     var body: some View {
         Text("\(Image(systemName: "info.circle")) profile will appear here... ").bold()
     }
 }
 
 #Preview {
-    profileView()
+    ProfileView()
 }

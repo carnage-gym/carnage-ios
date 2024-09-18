@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct logbookView: View {
+struct LogbookView: View {
     var body: some View {
         Text("\(Image(systemName: "info.circle")) logbook will appear here... ").bold()
     }
 }
 
 #Preview {
-    logbookView()
+    LogbookView()
 }
