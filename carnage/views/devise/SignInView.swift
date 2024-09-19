@@ -10,14 +10,17 @@ import SwiftUI
 class SignInViewModel : ObservableObject {
     @Published var email = ""
     @Published var password = ""
+    @Published var error_message = ""
     
-    func sign_in() {
-        Task {
-            let tokens = try! await API.getTokens(email: email.lowercased(), password: password)
-            
+    func sign_in() async {
+        do {
+            let tokens = try await API.getTokens(email: email.lowercased(), password: password)
             carnageApp.keychain.set(tokens.token, forKey: "key.string.token")
             
-            print(tokens.token)
+        } catch {
+            DispatchQueue.main.async { // error_message must be updated in main thread...
+                self.error_message = "Invalid data!"
+            }
         }
     }
 }
@@ -33,6 +36,11 @@ struct SignInView: View {
                     .fontWeight(.bold)
                     .padding()
                 // $ works "similarly" to & in C and cpp. The reason one cannot simply use email is because text is of type Binding<String> and not String.
+                
+                
+                if !model.error_message.isEmpty {
+                    Text(model.error_message).foregroundStyle(.red)
+                }
                 
                 Section {
                     TextField("Email", text: $model.email)
@@ -50,8 +58,10 @@ struct SignInView: View {
                 
                 
                 Button("Sign in") {
+                    model.error_message = "" // resets error message
+                    Task { await model.sign_in() }
                     
-                    model.sign_in()
+                    
                 }.padding().disabled(model.email.isEmpty || model.password.isEmpty)
                 
                 //VStack {
