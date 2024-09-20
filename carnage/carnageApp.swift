@@ -11,17 +11,6 @@ import KeychainWrapper
 
 @main
 struct carnageApp: App {
-    static let keychain: KeychainWrapper = KeychainWrapper(serviceName: "carnage.carnage")
-    
-    private func isLoggedIn() -> Bool {
-        let token = carnageApp.keychain.object(of: String.self, forKey: "key.string.token")
-        
-        guard token != nil else { return false }
-        
-        // might want to handle expiration too...
-        
-        return true
-    }
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -39,11 +28,7 @@ struct carnageApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if isLoggedIn() {
-                ContentView()
-            } else {
-                SignInView()
-            }
+            ContentView()
         }
         .modelContainer(sharedModelContainer)
     }

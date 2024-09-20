@@ -37,7 +37,6 @@ struct API {
             let dec = JSONDecoder()
             tokens = try! dec.decode(Tokens.self, from: data)
         }
-        
         return tokens
     }
 }

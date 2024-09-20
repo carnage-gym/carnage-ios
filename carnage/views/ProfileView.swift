@@ -10,13 +10,9 @@ import KeychainWrapper
 
 
 
-struct ProfileView: View {    
-    
-    
+struct ProfileView: View {
     var body: some View {
         Text("\(Image(systemName: "info.circle")) profile will appear here... ").bold()
-        
-        
     }
     
 }

@@ -19,6 +19,8 @@ final class carnageTests: XCTestCase {
     }
 
     /// Test retrieve token function.
+    ///
+    /// todo: delete this user lol.
     func testRetrieveTokens() async throws {
         let tokens = try await API.getTokens(email: "poopenfart@gmail.com", password: "123456")
         

@@ -16,8 +16,9 @@
 		A23563E82C97473D00418F5C /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E72C97473D00418F5C /* user.swift */; };
 		A23563EB2C9748A600418F5C /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563EA2C9748A600418F5C /* api.swift */; };
 		A23A49912C99C59000F56A2C /* tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A49902C99C59000F56A2C /* tokens.swift */; };
+		A244FF4F2C9DE5D50076AE49 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A244FF4E2C9DE5D50076AE49 /* KeychainSwift */; };
+		A244FF522C9DE6D60076AE49 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A244FF512C9DE6D60076AE49 /* KeychainSwift */; };
 		A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247AC3A2C8B096400E5F26A /* carnageButton.swift */; };
-		A25EE4762C9B02DC0009A041 /* KeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = A25EE4752C9B02DC0009A041 /* KeychainWrapper */; };
 		A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA822C88B20B00857B4B /* carnageApp.swift */; };
 		A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA842C88B20B00857B4B /* ContentView.swift */; };
 		A2A3AA872C88B20B00857B4B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA862C88B20B00857B4B /* Item.swift */; };
@@ -75,7 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A25EE4762C9B02DC0009A041 /* KeychainWrapper in Frameworks */,
+				A244FF522C9DE6D60076AE49 /* KeychainSwift in Frameworks */,
+				A244FF4F2C9DE5D50076AE49 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +223,8 @@
 			);
 			name = carnage;
 			packageProductDependencies = (
-				A25EE4752C9B02DC0009A041 /* KeychainWrapper */,
+				A244FF4E2C9DE5D50076AE49 /* KeychainSwift */,
+				A244FF512C9DE6D60076AE49 /* KeychainSwift */,
 			);
 			productName = carnage;
 			productReference = A2A3AA7F2C88B20B00857B4B /* carnage.app */;
@@ -296,7 +299,7 @@
 			);
 			mainGroup = A2A3AA762C88B20B00857B4B;
 			packageReferences = (
-				A25EE4742C9B02DC0009A041 /* XCRemoteSwiftPackageReference "KeychainWrapper" */,
+				A244FF502C9DE6D60076AE49 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = A2A3AA802C88B20B00857B4B /* Products */;
 			projectDirPath = "";
@@ -686,21 +689,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A25EE4742C9B02DC0009A041 /* XCRemoteSwiftPackageReference "KeychainWrapper" */ = {
+		A244FF502C9DE6D60076AE49 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/puretears/KeychainWrapper";
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.1;
+				minimumVersion = 24.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A25EE4752C9B02DC0009A041 /* KeychainWrapper */ = {
+		A244FF4E2C9DE5D50076AE49 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A25EE4742C9B02DC0009A041 /* XCRemoteSwiftPackageReference "KeychainWrapper" */;
-			productName = KeychainWrapper;
+			productName = KeychainSwift;
+		};
+		A244FF512C9DE6D60076AE49 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A244FF502C9DE6D60076AE49 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,13 +1,13 @@
 {
-  "originHash" : "8b81558daff724e3e6e0e333fda5c6c83f99812b99a1c7708353dfed3b2e55ba",
+  "originHash" : "61d0f8bddcbf3b93ae7ce1d42c4f6929e95bfcb66319ddeb36d0dda55337047e",
   "pins" : [
     {
-      "identity" : "keychainwrapper",
+      "identity" : "keychain-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/puretears/KeychainWrapper",
+      "location" : "https://github.com/evgenyneu/keychain-swift",
       "state" : {
-        "revision" : "e72bc3256b2f830750f1c0080bccc3058f866f3b",
-        "version" : "1.2.1"
+        "revision" : "5e1b02b6a9dac2a759a1d5dbc175c86bd192a608",
+        "version" : "24.0.0"
       }
     }
   ],

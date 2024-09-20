@@ -6,27 +6,38 @@
 //
 
 import SwiftUI
+import KeychainSwift
 
-class SignInViewModel : ObservableObject {
+class SignInViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var error_message = ""
-    
-    func sign_in() async {
-        do {
-            let tokens = try await API.getTokens(email: email.lowercased(), password: password)
-            carnageApp.keychain.set(tokens.token, forKey: "key.string.token")
-            
-        } catch {
-            DispatchQueue.main.async { // error_message must be updated in main thread...
-                self.error_message = "Invalid data!"
-            }
-        }
-    }
 }
 
 struct SignInView: View {
     @StateObject var model = SignInViewModel()
+    @Binding var signed_in: Bool
+    
+    @State var button_disabled = false
+    
+    private func sign_in() async {
+        do {
+            let tokens = try await API.getTokens(email: model.email.lowercased(), password: model.password)
+            
+            ContentView.keychain.set(tokens.token, forKey: "token")
+            
+            DispatchQueue.main.async {
+                signed_in = true
+            }
+            
+        } catch {
+            DispatchQueue.main.async { // error_message must be updated in main thread...
+                model.error_message = "Invalid credentials.\nMake sure your username and password are correct."
+                
+                button_disabled = false
+            }
+        }
+    }
         
     var body: some View {
         Form {
@@ -35,7 +46,6 @@ struct SignInView: View {
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(.bold)
                     .padding()
-                // $ works "similarly" to & in C and cpp. The reason one cannot simply use email is because text is of type Binding<String> and not String.
                 
                 
                 if !model.error_message.isEmpty {
@@ -44,6 +54,7 @@ struct SignInView: View {
                 
                 Section {
                     TextField("Email", text: $model.email)
+                        .textInputAutocapitalization(TextInputAutocapitalization.never)
                         .keyboardType(.emailAddress)
                         .padding(.all)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)
@@ -59,23 +70,19 @@ struct SignInView: View {
                 
                 Button("Sign in") {
                     model.error_message = "" // resets error message
-                    Task { await model.sign_in() }
+                    button_disabled = true // prevents user from sending further requests.
+                    Task {
+                        await sign_in()
+                    }
                     
                     
-                }.padding().disabled(model.email.isEmpty || model.password.isEmpty)
+                }.padding().disabled((model.email.isEmpty || model.password.isEmpty) || button_disabled)
                 
                 //VStack {
                 //    Text("token: \(accessToken)")
                 //    Text("refresh token: \(refreshToken)")
                 // }
-                
-                
-                
             }
         }
     }
-}
-
-#Preview {
-    SignInView()
 }
