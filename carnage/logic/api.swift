@@ -42,11 +42,11 @@ struct API {
     // TODO: get this to work
     static func getUser() async throws -> User {
         var user: User
-        let token = await ContentView.keychain.get("token")!
-        let url = URL.init(string: "\(API_URL)/api/profiles?token=\(token)")!
+        let token = carnageApp.keychain.get("token")!
+        let url = URL.init(string: "\(API_URL)/api/profiles")!
         
         
-        let (data, _) = try! await getRequest(url: url)
+        let (data, _) = try! await getRequest(url: url, token: token)
 
         do {
             let dec = JSONDecoder()
@@ -59,7 +59,7 @@ struct API {
     static func refresh() async throws -> Tokens {
         var tokens: Tokens
         let url = URL.init(string: "\(API_URL)/users/tokens/refresh")!
-        let rtoken = await ContentView.keychain.get("refresh_token")!
+        let rtoken = carnageApp.keychain.get("refresh_token")!
         
         var request = URLRequest(url: url)
 
@@ -83,10 +83,11 @@ struct API {
     }
     
     /// GET request helper.
-    private static func getRequest(url: URL) async throws -> (Data, URLResponse) {
+    private static func getRequest(url: URL, token: String) async throws -> (Data, URLResponse) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let (data, response) = try await session.data(for: request)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }

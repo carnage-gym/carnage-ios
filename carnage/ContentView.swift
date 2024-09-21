@@ -13,20 +13,10 @@ class ContentViewModel: ObservableObject {
     @Published var signed_in = false
     
     init(signed_in: Bool = false) {
-        let token = ContentView.keychain.get("token")
-        let refresh = ContentView.keychain.get("refresh_token")
+        let token = carnageApp.keychain.get("token")
         
         if token != nil {
             // still need to refresh...
-            print("refresh token: \(refresh!)")
-            print("Token: \(token!)")
-            
-            Task {
-                let tokens = try! await API.refresh()
-                await ContentView.keychain.set(tokens.token, forKey: "token")
-                await ContentView.keychain.set(tokens.refresh_token, forKey: "refresh_token")
-            }
-            
             self.signed_in = true
         }
     }
@@ -35,11 +25,8 @@ class ContentViewModel: ObservableObject {
 
 struct ContentView: View {
     @StateObject var model = ContentViewModel()
-    static let keychain = KeychainSwift()
-
     
-    var body: some View {
-        
+    var body: some View {        
         if model.signed_in {
             TabView() {
                 HomeView().tabItem {

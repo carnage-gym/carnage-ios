@@ -23,8 +23,8 @@ struct SignInView: View {
     private func sign_in() async {
         do {
             let tokens = try await API.getTokens(email: model.email.lowercased(), password: model.password)
-            ContentView.keychain.set(tokens.token, forKey: "token")
-            ContentView.keychain.set(tokens.refresh_token, forKey: "refresh_token")
+            carnageApp.keychain.set(tokens.token, forKey: "token")
+            carnageApp.keychain.set(tokens.refresh_token, forKey: "refresh_token")
             
             DispatchQueue.main.async {
                 signed_in = true

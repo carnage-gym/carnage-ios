@@ -9,9 +9,9 @@ import Foundation
 
 class User : Decodable {
     let username: String
-    let age: UInt8
-    let weight: UInt8
-    let height: UInt8
+    let age: UInt8?
+    let weight: UInt8?
+    let height: UInt8?
     let id: UInt8
     
     init(name: String, age: UInt8, weight: UInt8, height: UInt8, id: UInt8) {
