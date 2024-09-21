@@ -33,10 +33,64 @@ struct API {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
         
         do {
-            print(data)
             let dec = JSONDecoder()
             tokens = try! dec.decode(Tokens.self, from: data)
         }
         return tokens
+    }
+
+    // TODO: get this to work
+    static func getUser() async throws -> User {
+        var user: User
+        let token = await ContentView.keychain.get("token")!
+        let url = URL.init(string: "\(API_URL)/api/profiles?token=\(token)")!
+        
+        
+        let (data, _) = try! await getRequest(url: url)
+
+        do {
+            let dec = JSONDecoder()
+            user = try! dec.decode(User.self, from: data)
+        }
+        return user
+    }
+    
+    /// refreshes access and refresh tokens.
+    static func refresh() async throws -> Tokens {
+        var tokens: Tokens
+        let url = URL.init(string: "\(API_URL)/users/tokens/refresh")!
+        let rtoken = await ContentView.keychain.get("refresh_token")!
+        
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(rtoken)", forHTTPHeaderField: "Authorization")
+        
+        let (data, response) = try await session.data(for: request)
+        print((response as! HTTPURLResponse).statusCode)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APIError.InvalidRequest
+        }
+    
+        do {
+            let dec = JSONDecoder()
+            tokens = try! dec.decode(Tokens.self, from: data)
+        }
+        
+        
+        return tokens
+    }
+    
+    /// GET request helper.
+    private static func getRequest(url: URL) async throws -> (Data, URLResponse) {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let (data, response) = try await session.data(for: request)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
+        
+        return (data, response)
     }
 }

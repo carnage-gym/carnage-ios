@@ -8,11 +8,36 @@
 import SwiftUI
 import KeychainWrapper
 
+class ProfileViewModel : ObservableObject {
+    @Published var user : User? = nil
+    
+    func set_user() async throws {
+        let user = try! await API.getUser()
 
+        DispatchQueue.main.async {
+            self.user = user
+        }
+    }
+}
 
 struct ProfileView: View {
+    @StateObject var model = ProfileViewModel()
+    
     var body: some View {
-        Text("\(Image(systemName: "info.circle")) profile will appear here... ").bold()
+        VStack {
+            Text("Profile").bold()
+            
+            if model.user != nil {
+                Text(model.user!.username)
+                
+            } else {
+                Text("Loading...").bold()
+            }
+        }.onAppear(perform: {
+            Task { 
+                try await model.set_user()
+            }
+        })
     }
     
 }

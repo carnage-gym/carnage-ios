@@ -23,8 +23,8 @@ struct SignInView: View {
     private func sign_in() async {
         do {
             let tokens = try await API.getTokens(email: model.email.lowercased(), password: model.password)
-            
             ContentView.keychain.set(tokens.token, forKey: "token")
+            ContentView.keychain.set(tokens.refresh_token, forKey: "refresh_token")
             
             DispatchQueue.main.async {
                 signed_in = true
@@ -33,7 +33,6 @@ struct SignInView: View {
         } catch {
             DispatchQueue.main.async { // error_message must be updated in main thread...
                 model.error_message = "Invalid credentials.\nMake sure your username and password are correct."
-                
                 button_disabled = false
             }
         }
@@ -55,6 +54,7 @@ struct SignInView: View {
                 Section {
                     TextField("Email", text: $model.email)
                         .textInputAutocapitalization(TextInputAutocapitalization.never)
+                        .textFieldStyle(.roundedBorder)
                         .keyboardType(.emailAddress)
                         .padding(.all)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)
@@ -62,6 +62,7 @@ struct SignInView: View {
                     Spacer()
                                     
                     SecureField("Password", text: $model.password)
+                        .textFieldStyle(.roundedBorder)
                         .padding(.all)
                         .shadow(radius: 1)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)

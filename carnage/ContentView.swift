@@ -14,10 +14,18 @@ class ContentViewModel: ObservableObject {
     
     init(signed_in: Bool = false) {
         let token = ContentView.keychain.get("token")
+        let refresh = ContentView.keychain.get("refresh_token")
         
         if token != nil {
-            // todo: handle refresh token...
+            // still need to refresh...
+            print("refresh token: \(refresh!)")
+            print("Token: \(token!)")
             
+            Task {
+                let tokens = try! await API.refresh()
+                await ContentView.keychain.set(tokens.token, forKey: "token")
+                await ContentView.keychain.set(tokens.refresh_token, forKey: "refresh_token")
+            }
             
             self.signed_in = true
         }
