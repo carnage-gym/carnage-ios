@@ -46,7 +46,6 @@ struct SignInView: View {
                     .fontWeight(.bold)
                     .padding()
                 
-                
                 if !model.error_message.isEmpty {
                     Text(model.error_message).foregroundStyle(.red)
                 }
@@ -57,17 +56,12 @@ struct SignInView: View {
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.emailAddress)
                         .padding(.all)
-                        .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)
-                        
-                    Spacer()
                                     
                     SecureField("Password", text: $model.password)
                         .textFieldStyle(.roundedBorder)
                         .padding(.all)
-                        .shadow(radius: 1)
                         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255)), alignment: .bottom)
                 }
-                
                 
                 Button("Sign in") {
                     model.error_message = "" // resets error message
@@ -75,7 +69,6 @@ struct SignInView: View {
                     Task {
                         await sign_in()
                     }
-                    
                     
                 }.padding().disabled((model.email.isEmpty || model.password.isEmpty) || button_disabled)
                 
@@ -87,3 +80,9 @@ struct SignInView: View {
         }
     }
 }
+#Preview {
+    // bruh
+    let d = ContentView()
+    return SignInView(signed_in: d.$model.signed_in)
+}
+
