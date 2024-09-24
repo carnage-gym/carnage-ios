@@ -16,7 +16,6 @@
 		A23563E82C97473D00418F5C /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E72C97473D00418F5C /* user.swift */; };
 		A23563EB2C9748A600418F5C /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563EA2C9748A600418F5C /* api.swift */; };
 		A23A49912C99C59000F56A2C /* tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A49902C99C59000F56A2C /* tokens.swift */; };
-		A244FF4F2C9DE5D50076AE49 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A244FF4E2C9DE5D50076AE49 /* KeychainSwift */; };
 		A244FF522C9DE6D60076AE49 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A244FF512C9DE6D60076AE49 /* KeychainSwift */; };
 		A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247AC3A2C8B096400E5F26A /* carnageButton.swift */; };
 		A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA822C88B20B00857B4B /* carnageApp.swift */; };
@@ -77,7 +76,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A244FF522C9DE6D60076AE49 /* KeychainSwift in Frameworks */,
-				A244FF4F2C9DE5D50076AE49 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +221,6 @@
 			);
 			name = carnage;
 			packageProductDependencies = (
-				A244FF4E2C9DE5D50076AE49 /* KeychainSwift */,
 				A244FF512C9DE6D60076AE49 /* KeychainSwift */,
 			);
 			productName = carnage;
@@ -449,6 +446,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-interposable",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -505,6 +506,11 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-interposable",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -523,6 +529,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = carnage/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Carnage;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -553,6 +561,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = carnage/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Carnage;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -700,10 +710,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A244FF4E2C9DE5D50076AE49 /* KeychainSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KeychainSwift;
-		};
 		A244FF512C9DE6D60076AE49 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A244FF502C9DE6D60076AE49 /* XCRemoteSwiftPackageReference "keychain-swift" */;

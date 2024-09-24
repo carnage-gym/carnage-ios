@@ -30,7 +30,9 @@ struct API {
         let (data, response) = try await session.data(for: request)
         
         // Only gets past this line if response is successful
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            print((response as! HTTPURLResponse).statusCode) // Sometimes req errors out.
+            throw APIError.InvalidRequest }
         
         do {
             let dec = JSONDecoder()

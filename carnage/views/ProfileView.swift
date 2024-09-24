@@ -24,22 +24,33 @@ struct ProfileView: View {
     @StateObject var model = ProfileViewModel()
     
     var body: some View {
-        VStack {
-            Text("Profile").bold()
-            
-            if model.user != nil {
-                Text(model.user!.username)
-                
-            } else {
-                Text("Loading...").bold()
+        VStack(alignment: .leading) {
+            HStack {
+                Group {
+                    Circle().frame(width: 75, height: 75).backgroundStyle(.gray)
+                        .baselineOffset(0)
+                    
+                    if model.user != nil {
+                        Text(model.user!.username).bold().padding(.leading, 10)
+                        
+                    } else {
+                        Text("Loading...").bold()
+                    }
+                }
+                Spacer()
             }
+            Divider()
+            
+            Text("\(Image(systemName: "info.circle")) statistics will appear here... ").bold()
+            Spacer()
+
+            
         }.onAppear(perform: {
-            Task { 
+            Task {
                 try await model.set_user()
             }
-        })
+        }).frame(alignment: .top).padding(.all, 16)
     }
-    
 }
 
 #Preview {
