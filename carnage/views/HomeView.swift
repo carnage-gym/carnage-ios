@@ -17,7 +17,6 @@ struct HomeView: View {
             Text("\(Image(systemName: "info.circle")) workouts will appear here... ").bold()
 
             Spacer()
-            Divider()
         })    }
 }
 

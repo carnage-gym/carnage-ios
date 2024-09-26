@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import KeychainWrapper
 
 class ProfileViewModel : ObservableObject {
     @Published var user : User? = nil
@@ -38,6 +37,12 @@ struct ProfileView: View {
                     }
                 }
                 Spacer()
+                Button {
+                    
+                } label: {
+                    Label("", systemImage: "gear").font(.title2)
+                }
+
             }
             Divider()
             
@@ -51,8 +56,4 @@ struct ProfileView: View {
             }
         }).frame(alignment: .top).padding(.all, 16)
     }
-}
-
-#Preview {
-    ProfileView()
 }
