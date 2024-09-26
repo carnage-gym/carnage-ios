@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import KeychainSwift
 
+
 class ContentViewModel: ObservableObject {
     @Published var signed_in = false
     
@@ -31,19 +32,20 @@ struct ContentView: View {
             TabView() {
                 HomeView().tabItem {
                     Label("Home", systemImage: "house.fill")
-                        .foregroundStyle(.carnageRed)
                 }
                 
                 LogbookView().tabItem {
                     Label("Logbook", systemImage: "book.closed.fill")
-                        .foregroundStyle(.carnageRed)
+                }
+                
+                FitnessView().tabItem {
+                    Label("Routines", systemImage: "checklist")
                 }
                 
                 ProfileView().tabItem {
                     Label("Profile", systemImage: "person.fill")
-                        .foregroundStyle(.carnageRed)
                 }
-            }
+            }.tint(.carnageRed)
         } else {
             SignInView(signed_in: $model.signed_in)
         }

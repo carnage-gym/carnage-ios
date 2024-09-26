@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class Workout : Decodable {
+    let title: String
+    let duration: Int
+    let description: String
+}
