@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct carnageNavLink<T : View>: View {
+struct CarnageNavLink<T : View>: View {
     let image: String
     let dest: T
         

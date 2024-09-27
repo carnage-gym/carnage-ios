@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A20264822CA5E5B3003D9DDD /* workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20264812CA5E5B3003D9DDD /* workout.swift */; };
-		A20CF6932C971F9200D0491E /* carnageNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20CF6922C971F9200D0491E /* carnageNavLink.swift */; };
+		A20CF6932C971F9200D0491E /* CarnageNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20CF6922C971F9200D0491E /* CarnageNavLink.swift */; };
 		A21C3CEC2C99CFC100774DDC /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21C3CEB2C99CFC100774DDC /* SignInView.swift */; };
 		A23563E82C97473D00418F5C /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563E72C97473D00418F5C /* user.swift */; };
 		A23563EB2C9748A600418F5C /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23563EA2C9748A600418F5C /* api.swift */; };
 		A23A49912C99C59000F56A2C /* tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23A49902C99C59000F56A2C /* tokens.swift */; };
 		A244FF522C9DE6D60076AE49 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A244FF512C9DE6D60076AE49 /* KeychainSwift */; };
-		A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A247AC3A2C8B096400E5F26A /* carnageButton.swift */; };
 		A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA822C88B20B00857B4B /* carnageApp.swift */; };
 		A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA842C88B20B00857B4B /* ContentView.swift */; };
 		A2A3AA872C88B20B00857B4B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A3AA862C88B20B00857B4B /* Item.swift */; };
@@ -27,6 +26,8 @@
 		A2C9BCD32CA5F95200B5CA54 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C9BCCF2CA5F95200B5CA54 /* ProfileView.swift */; };
 		A2C9BCD42CA5F95200B5CA54 /* LogbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C9BCD02CA5F95200B5CA54 /* LogbookView.swift */; };
 		A2C9BCD52CA5F95200B5CA54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C9BCD12CA5F95200B5CA54 /* HomeView.swift */; };
+		A2C9BCD72CA722B200B5CA54 /* RoutineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C9BCD62CA722B200B5CA54 /* RoutineComponent.swift */; };
+		A2C9BCD92CA722E500B5CA54 /* exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C9BCD82CA722E500B5CA54 /* exercise.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,12 +49,11 @@
 
 /* Begin PBXFileReference section */
 		A20264812CA5E5B3003D9DDD /* workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workout.swift; sourceTree = "<group>"; };
-		A20CF6922C971F9200D0491E /* carnageNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageNavLink.swift; sourceTree = "<group>"; };
+		A20CF6922C971F9200D0491E /* CarnageNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarnageNavLink.swift; sourceTree = "<group>"; };
 		A21C3CEB2C99CFC100774DDC /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A23563E72C97473D00418F5C /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		A23563EA2C9748A600418F5C /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		A23A49902C99C59000F56A2C /* tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tokens.swift; sourceTree = "<group>"; };
-		A247AC3A2C8B096400E5F26A /* carnageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageButton.swift; sourceTree = "<group>"; };
 		A2A3AA7F2C88B20B00857B4B /* carnage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carnage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A3AA822C88B20B00857B4B /* carnageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carnageApp.swift; sourceTree = "<group>"; };
 		A2A3AA842C88B20B00857B4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +69,8 @@
 		A2C9BCCF2CA5F95200B5CA54 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A2C9BCD02CA5F95200B5CA54 /* LogbookView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogbookView.swift; sourceTree = "<group>"; };
 		A2C9BCD12CA5F95200B5CA54 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A2C9BCD62CA722B200B5CA54 /* RoutineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineComponent.swift; sourceTree = "<group>"; };
+		A2C9BCD82CA722E500B5CA54 /* exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exercise.swift; sourceTree = "<group>"; };
 		A2D0E41A2C99BBBB005C7DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,8 +103,8 @@
 		A20CF68F2C970DCE00D0491E /* components */ = {
 			isa = PBXGroup;
 			children = (
-				A247AC3A2C8B096400E5F26A /* carnageButton.swift */,
-				A20CF6922C971F9200D0491E /* carnageNavLink.swift */,
+				A20CF6922C971F9200D0491E /* CarnageNavLink.swift */,
+				A2C9BCD62CA722B200B5CA54 /* RoutineComponent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -121,6 +123,7 @@
 				A23563E72C97473D00418F5C /* user.swift */,
 				A23A49902C99C59000F56A2C /* tokens.swift */,
 				A20264812CA5E5B3003D9DDD /* workout.swift */,
+				A2C9BCD82CA722E500B5CA54 /* exercise.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -348,15 +351,16 @@
 				A2C9BCD42CA5F95200B5CA54 /* LogbookView.swift in Sources */,
 				A20264822CA5E5B3003D9DDD /* workout.swift in Sources */,
 				A2A3AA852C88B20B00857B4B /* ContentView.swift in Sources */,
-				A20CF6932C971F9200D0491E /* carnageNavLink.swift in Sources */,
+				A2C9BCD92CA722E500B5CA54 /* exercise.swift in Sources */,
+				A20CF6932C971F9200D0491E /* CarnageNavLink.swift in Sources */,
 				A2C9BCD32CA5F95200B5CA54 /* ProfileView.swift in Sources */,
 				A2A3AA872C88B20B00857B4B /* Item.swift in Sources */,
 				A21C3CEC2C99CFC100774DDC /* SignInView.swift in Sources */,
 				A2C9BCD22CA5F95200B5CA54 /* FitnessView.swift in Sources */,
+				A2C9BCD72CA722B200B5CA54 /* RoutineComponent.swift in Sources */,
 				A23563E82C97473D00418F5C /* user.swift in Sources */,
 				A2A3AA832C88B20B00857B4B /* carnageApp.swift in Sources */,
 				A23A49912C99C59000F56A2C /* tokens.swift in Sources */,
-				A247AC3B2C8B096400E5F26A /* carnageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

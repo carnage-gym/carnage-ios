@@ -1,4 +1,3 @@
-//
 //  workoutsView.swift
 //  carnage
 //
@@ -10,7 +9,14 @@ import SwiftUI
 /// will contain routines and maybe some other things in the future.
 struct FitnessView: View {
     var body: some View {
-        Text("\(Image(systemName: "info.circle")) user routines will appear here... ").bold()
+        VStack(spacing: 30) {
+            Text("Routines").bold().font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            
+            Spacer()
+            
+            
+            
+        }.padding(.all, 16)
     }
 }
 
