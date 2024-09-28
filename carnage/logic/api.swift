@@ -43,17 +43,13 @@ struct API {
 
     // TODO: get this to work
     static func getUser() async throws -> User {
-        var user: User
         let token = carnageApp.keychain.get("token")!
+        let dec = JSONDecoder()
         let url = URL.init(string: "\(API_URL)/api/profiles")!
         
-        
         let (data, _) = try! await getRequest(url: url, token: token)
-
-        do {
-            let dec = JSONDecoder()
-            user = try! dec.decode(User.self, from: data)
-        }
+        let user = try! dec.decode(User.self, from: data)
+        
         return user
     }
     

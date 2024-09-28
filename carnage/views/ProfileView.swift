@@ -42,14 +42,12 @@ struct ProfileView: View {
                 } label: {
                     Label("", systemImage: "gear").font(.title2)
                 }
-
             }
-            Divider()
             
+            Divider()
             Text("\(Image(systemName: "info.circle")) statistics will appear here... ").bold()
             Spacer()
 
-            
         }.onAppear(perform: {
             Task {
                 try await model.set_user()

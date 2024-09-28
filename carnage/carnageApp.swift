@@ -25,16 +25,6 @@ struct carnageApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
-    init() {
-        if carnageApp.keychain.get("token") != nil { // Refreshes token if needed.
-            Task {
-                let tokens = try! await API.refresh()
-                carnageApp.keychain.set(tokens.token, forKey: "token")
-                carnageApp.keychain.set(tokens.refresh_token, forKey: "refresh_token")
-            }
-        }
-    }
 
 
     var body: some Scene {
