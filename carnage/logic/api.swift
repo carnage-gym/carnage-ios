@@ -20,14 +20,10 @@ struct API {
     static func getTokens(email: String, password: String) async throws -> Tokens {
         var tokens : Tokens
         let url = URL.init(string: "\(API_URL)/users/tokens/sign_in")!
-        let parameters = ["email" : email, "password" : password]
-        var request = URLRequest(url: url)
-
-        request.httpMethod = "POST"
-        request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let params = ["email" : email, "password" : password]
+        let headers = ["Content-Type" : "application/json"]
             
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await request(url: url, method: "POST", headers: headers, params: params)
         
         // Only gets past this line if response is successful
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -41,7 +37,6 @@ struct API {
         return tokens
     }
 
-    // TODO: get this to work
     static func getUser() async throws -> User {
         let token = carnageApp.keychain.get("token")!
         let dec = JSONDecoder()
@@ -59,14 +54,10 @@ struct API {
         let url = URL.init(string: "\(API_URL)/users/tokens/refresh")!
         let rtoken = carnageApp.keychain.get("refresh_token")!
         
-        var request = URLRequest(url: url)
-
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(rtoken)", forHTTPHeaderField: "Authorization")
+        let headers = ["Content-Type" : "application/json",
+                       "Authorization" : "Bearer \(rtoken)"]
         
-        let (data, response) = try await session.data(for: request)
-        print((response as! HTTPURLResponse).statusCode)
+        let (data, response) = try await request(url: url, method: "POST", headers: headers, params: [:])
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw APIError.InvalidRequest
         }
@@ -75,7 +66,6 @@ struct API {
             let dec = JSONDecoder()
             tokens = try! dec.decode(Tokens.self, from: data)
         }
-        
         
         return tokens
     }
@@ -91,5 +81,18 @@ struct API {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
         
         return (data, response)
+    }
+    
+    /// helper function to make requests
+    private static func request(url: URL, method: String, headers: [String : String], params: [String : String]) async throws -> (Data, URLResponse) {
+        var req = URLRequest(url: url)
+        req.httpMethod = method
+        req.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+        
+        for (key, value) in headers {
+            req.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        return try! await API.session.data(for: req)
     }
 }

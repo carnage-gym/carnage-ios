@@ -38,7 +38,6 @@ struct ProfileView: View {
                 }
                 Spacer()
                 Button {
-                    
                 } label: {
                     Label("", systemImage: "gear").font(.title2)
                 }
@@ -46,6 +45,11 @@ struct ProfileView: View {
             
             Divider()
             Text("\(Image(systemName: "info.circle")) statistics will appear here... ").bold()
+            
+            Text("DEBUG").bold()
+            Text("Access token \(carnageApp.keychain.get("token")!)")
+            Text("Refresh token \(carnageApp.keychain.get("refresh_token")!)")
+            
             Spacer()
 
         }.onAppear(perform: {

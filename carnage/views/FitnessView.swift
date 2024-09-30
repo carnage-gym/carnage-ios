@@ -15,7 +15,6 @@ struct FitnessView: View {
             Spacer()
             
             
-            
         }.padding(.all, 16)
     }
 }
