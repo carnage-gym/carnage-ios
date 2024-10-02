@@ -27,6 +27,14 @@ final class carnageTests: XCTestCase {
         print("Access token: \(tokens.token)")
         print("Refresh token: \(tokens.refresh_token)")
     }
+    
+    func testRetrieveRoutines() async throws {
+        let routines = try await API.getRoutines()
+        
+        print(routines)
+        
+        
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

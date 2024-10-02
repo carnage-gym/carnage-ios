@@ -9,7 +9,7 @@ import Foundation
 
 enum APIError : Error {
     case InvalidResponse
-    case InvalidRequest
+    case APIError
 }
 
 struct API {
@@ -28,7 +28,7 @@ struct API {
         // Only gets past this line if response is successful
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             print((response as! HTTPURLResponse).statusCode) // Sometimes req errors out.
-            throw APIError.InvalidRequest }
+            throw APIError.APIError }
         
         do {
             let dec = JSONDecoder()
@@ -42,7 +42,10 @@ struct API {
         let dec = JSONDecoder()
         let url = URL.init(string: "\(API_URL)/api/profiles")!
         
-        let (data, _) = try! await getRequest(url: url, token: token)
+        let headers = ["Content-Type" : "application/json",
+                       "Authorization" : "Bearer \(token)"]
+        
+        let (data, _) = try! await request(url: url, method: "GET", headers: headers, params: [:])
         let user = try! dec.decode(User.self, from: data)
         
         return user
@@ -59,7 +62,7 @@ struct API {
         
         let (data, response) = try await request(url: url, method: "POST", headers: headers, params: [:])
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.InvalidRequest
+            throw APIError.APIError
         }
     
         do {
@@ -70,24 +73,33 @@ struct API {
         return tokens
     }
     
-    /// GET request helper.
-    private static func getRequest(url: URL, token: String) async throws -> (Data, URLResponse) {
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    static func getRoutines() async throws -> [Routine] {
+        let routines: [Routine]
+        let url = URL.init(string: "\(API_URL)/api/routines")!
+        let token = carnageApp.keychain.get("token")!
+        let headers = ["Authorization" : "Bearer \(token)",
+                       "Content-Type" : "application/json"]
         
-        let (data, response) = try await session.data(for: request)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.InvalidRequest }
+        let (data, response) = try! await request(url: url, method: "GET", headers: headers, params: [:])
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw APIError.APIError }
         
-        return (data, response)
+        do {
+            let dec = JSONDecoder()
+            routines = try! dec.decode([Routine].self, from: data)
+        }
+
+        
+        return routines
     }
-    
+
     /// helper function to make requests
     private static func request(url: URL, method: String, headers: [String : String], params: [String : String]) async throws -> (Data, URLResponse) {
         var req = URLRequest(url: url)
         req.httpMethod = method
-        req.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+        
+        if (method != "GET") {
+            req.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+        }
         
         for (key, value) in headers {
             req.setValue(value, forHTTPHeaderField: key)
