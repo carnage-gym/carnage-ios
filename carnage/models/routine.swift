@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Routine : Decodable {
+class Routine : Decodable, Identifiable {
     let name: String
     let description: String
 }

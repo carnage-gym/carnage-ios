@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RoutineComponent: View {
     let name: String
-    let emphasis: String
+    let description: String
     let id: Int // later used to start workouts through a routine blueprint.
     
     var body: some View {
@@ -40,5 +40,5 @@ struct RoutineComponent: View {
 }
 
 #Preview {
-    RoutineComponent(name: "Upper A", emphasis: "Back, Biceps", id: 1)
+    RoutineComponent(name: "Upper A", description: "Back, Biceps", id: 1)
 }
